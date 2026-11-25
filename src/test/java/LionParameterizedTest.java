@@ -1,4 +1,4 @@
-import com.example.Feline;
+import com.example.LionDependency;
 import com.example.Lion;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class LionParameterizedTest {
 
-    private Feline feline = Mockito.mock(Feline.class);
+    private final LionDependency dependency = Mockito.mock(LionDependency.class);
 
     private final String sex;
     private final boolean expectedHasMane;
@@ -35,29 +35,29 @@ public class LionParameterizedTest {
 
     @Before
     public void setUp() throws Exception {
-        lion = new Lion(sex, feline);
+        lion = new Lion(sex, dependency);
     }
 
     @Test
     public void getKittensTest() {
         int expected = 1;
 
-        Mockito.when(feline.getKittens()).thenReturn(1);
+        Mockito.when(dependency.getKittens()).thenReturn(1);
         int actual = lion.getKittens();
 
         assertEquals(expected, actual);
-        Mockito.verify(feline, Mockito.times(1)).getKittens();
+        Mockito.verify(dependency, Mockito.times(1)).getKittens();
     }
 
     @Test
     public void getFoodTest() throws Exception {
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
 
-        Mockito.when(feline.getFood("Хищник")).thenReturn(expected);
+        Mockito.when(dependency.getFood("Хищник")).thenReturn(expected);
         List<String> actual = lion.getFood();
 
         assertEquals(expected, actual);
-        Mockito.verify(feline, Mockito.times(1)).getFood("Хищник");
+        Mockito.verify(dependency, Mockito.times(1)).getFood("Хищник");
     }
 
     @Test
