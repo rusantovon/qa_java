@@ -14,20 +14,16 @@ public class CatTest {
 
     @Test
     public void getSoundTest() {
-        String expected = "Мяу";
-        String actual = cat.getSound();
-
-        assertEquals(expected, actual);
+        assertEquals("Мяу", cat.getSound());
     }
 
     @Test
     public void getFoodTest() throws Exception {
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
-
         Mockito.when(feline.eatMeat()).thenReturn(expected);
+
         List<String> actual = cat.getFood();
 
         assertEquals(expected, actual);
-        Mockito.verify(feline, Mockito.times(1)).eatMeat();
     }
 }

@@ -6,10 +6,10 @@ public class Lion {
 
     boolean hasMane;
 
-    private final LionDependency dependency;
+    private final Feline feline;
 
-    public Lion(String sex, LionDependency dependency) throws Exception {
-        this.dependency = dependency;
+    public Lion(String sex, Feline feline) throws Exception {
+        this.feline = feline;
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
@@ -20,7 +20,7 @@ public class Lion {
     }
 
     public int getKittens() {
-        return dependency.getKittens();
+        return feline.getKittens();
     }
 
     public boolean doesHaveMane() {
@@ -28,6 +28,6 @@ public class Lion {
     }
 
     public List<String> getFood() throws Exception {
-        return dependency.getFood("Хищник");
+        return feline.getFood("Хищник");
     }
 }
